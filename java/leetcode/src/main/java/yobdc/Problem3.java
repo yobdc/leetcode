@@ -24,7 +24,9 @@ public class Problem3 {
                 }
             }
             maxSize = maxSize > current ? maxSize : current;
+            int oldStart = start;
             start = s.indexOf(c, start) + 1;
+            String subStr = s.substring(oldStart, start);
             charSet.clear();
             current = 0;
         }

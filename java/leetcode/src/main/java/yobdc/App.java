@@ -5,6 +5,6 @@ package yobdc;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println(new Problem3().lengthOfLongestSubstring("abaab"));
+        System.out.println(new Problem3().lengthOfLongestSubstring("abcdeag"));
     }
 }
