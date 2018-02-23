@@ -74,4 +74,10 @@ public class Problem4 {
 
         return result;
     }
+
+    public void test() {
+        int[] nums1 = {1,2};
+        int[] nums2 = {3,4};
+        System.out.println(this.findMedianSortedArrays(nums1, nums2));
+    }
 }
