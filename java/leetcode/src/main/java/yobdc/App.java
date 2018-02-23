@@ -5,6 +5,8 @@ package yobdc;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println(new Problem3().lengthOfLongestSubstring("abcdeag"));
+        int[] nums1 = {1,2};
+        int[] nums2 = {3,4};
+        System.out.println(new Problem4().findMedianSortedArrays(nums1, nums2));
     }
 }
