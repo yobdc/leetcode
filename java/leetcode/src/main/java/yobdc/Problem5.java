@@ -9,12 +9,16 @@ public class Problem5 {
         int size = s1.length();
         int maxSize = 1;
         int maxIndex = 0;
-        for (int i = 0; i < size; i++) {
+        for (int i = 1; i < size - 1; i++) {
             boolean stop = false;
             int distance = 1;
             while (!stop) {
                 if (i - distance < 0 || i + distance >= size) {
                     break;
+                }
+                if (delimiter.equals(s1.charAt(i - distance))) {
+                    distance++;
+                    continue;
                 }
                 if (s1.charAt(i - distance) == s1.charAt(i + distance)) {
                     distance++;
