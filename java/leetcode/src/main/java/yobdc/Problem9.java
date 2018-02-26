@@ -6,6 +6,6 @@ public class Problem9 {
     }
 
     public void test() {
-        System.out.println(isPalindrome("-2147483649"));
+        System.out.println(isPalindrome(12321));
     }
 }
