@@ -8,14 +8,24 @@ public class Problem10 {
         if (p == s) {
             return true;
         }
-        if (!p.contains("*") && p.length() != s.length()) {
-            return false;
+        boolean match = true;
+        if (!p.contains("*")) {
+            if (p.length() != s.length()) {
+                return false;
+            } else {
+                for (int i = 0; i < p.length(); i++) {
+                    char pChar = p.charAt(i);
+                    if (pChar != '.' && pChar != s.charAt(i)) {
+                        return false;
+                    }
+                }
+            }
         }
-        return false;
+        return match;
     }
 
     public void test() {
-        System.out.println(isMatch("aa", "aa"));
+        System.out.println(isMatch("aaa", "..."));
 //        isMatch("aa","a") → false
 //        isMatch("aa","aa") → true
 //        isMatch("aaa","aa") → false
