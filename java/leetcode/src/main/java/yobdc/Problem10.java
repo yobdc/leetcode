@@ -20,12 +20,45 @@ public class Problem10 {
                     }
                 }
             }
+        } else {
+            String[] pList = p.split("\\*");
+            int startIndex = 0;
+            for (int i = 0; i < pList.length; i++) {
+                String pStr = pList[i];
+                if (pStr == null || pStr.isEmpty()) {
+                    continue;
+                }
+                int tmpStart = indexOf(s, pStr, startIndex);
+                if (tmpStart < 0) {
+                    return false;
+                } else {
+                    startIndex += pStr.length();
+                }
+            }
+            if (startIndex < s.length() && p.charAt(p.length() - 1) != '*') {
+                return false;
+            }
         }
         return match;
     }
 
+    private int indexOf(String src, String tar, int startIndex) {
+        if (tar.contains(".")) {
+            boolean found = false;
+            for (int i = 0; i < src.length() - startIndex - tar.length(); i++) {
+                if (src.charAt(startIndex + i) == tar.charAt(i) || tar.charAt(i) == '.') {
+                    continue;
+                } else {
+
+                }
+            }
+        } else {
+            return src.indexOf(tar, startIndex);
+        }
+    }
+
     public void test() {
-        System.out.println(isMatch("aaa", "..."));
+        System.out.println(isMatch("abbbc", "a*b*"));
 //        isMatch("aa","a") → false
 //        isMatch("aa","aa") → true
 //        isMatch("aaa","aa") → false
