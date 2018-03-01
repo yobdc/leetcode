@@ -8,81 +8,59 @@ public class Problem10 {
         if (p == s) {
             return true;
         }
-        boolean match = true;
-
-        int sIndex = 0;
-        int pIndex = 0;
-        char prePChar = 0;
-        char postPChar = 0;
-        while (sIndex < s.length() && pIndex < p.length()) {
-            char sChar = s.charAt(sIndex);
-            char pChar = p.charAt(pIndex);
-
-            if (p.length() - pIndex > s.length() - sIndex) {
-                if (pIndex + 1 < p.length()) {
-                    if (p.charAt(pIndex + 1) == '*') {
-                        pIndex += 2;
-                        continue;
-                    }
-                }
-            }
-
-            if (pChar == '.') {
-                sIndex++;
-                pIndex++;
-                prePChar = pChar;
-            } else if (pChar == '*') {
-                if (prePChar == '.' || prePChar == sChar) {
-                    sIndex++;
-                    if (p.length() - pIndex > s.length() - sIndex) {
-                        pIndex++;
-                    }
-                } else {
-                    if (pIndex + 1 < p.length()) {
-                        postPChar = p.charAt(pIndex + 1);
-                    } else {
-                        postPChar = 0;
-                    }
-                    if (postPChar == sChar) {
-                        sIndex++;
-                        pIndex += 2;
-                        prePChar = postPChar;
-                    } else {
-                        return false;
-                    }
-                }
-            } else {
-                if (sChar != pChar) {
-                    if (pIndex + 1 < p.length()) {
-                        postPChar = p.charAt(pIndex + 1);
-                    }
-                    if (postPChar == '*') {
-                        pIndex++;
-                        prePChar = pChar;
-                        continue;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    sIndex++;
-                    pIndex++;
-                    prePChar = pChar;
-                }
-            }
-        }
-        if (sIndex - s.length() != pIndex - p.length()) {
-            if (pIndex + 1 == p.length() && p.charAt(pIndex) == '*') {
-                match = true;
-            } else {
-                match = false;
-            }
-        }
-
-        return match;
+        return isMatch(s, 0, p, 0);
     }
 
+    public boolean isMatch(String s, int sIndex, String p, int pIndex) {
+        if (sIndex == s.length() && isAllFuzzy(p, pIndex)) {
+            return true;
+        }
+        if (sIndex < s.length() && pIndex < p.length()) {
+            char curSChar = s.charAt(sIndex);
+            char curPChar = p.charAt(pIndex);
+            boolean fuzzy = false;
+            boolean matchCurrent = false;
+            if (pIndex + 1 < p.length() && p.charAt(pIndex + 1) == '*') {
+                fuzzy = true;
+            }
+            if (curPChar == '.' || curPChar == curSChar) {
+                matchCurrent = true;
+            }
+
+            if (fuzzy) {
+                if (matchCurrent) {
+                    return isMatch(s, sIndex, p, pIndex + 2)
+                            || isMatch(s, sIndex + 1, p, pIndex)
+                            || isMatch(s, sIndex + 1, p, pIndex + 2);
+                } else {
+                    return isMatch(s, sIndex, p, pIndex + 2);
+                }
+            } else {
+                if (matchCurrent) {
+                    return isMatch(s, sIndex + 1, p, pIndex + 1);
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    boolean isAllFuzzy(String p, int pIndex) {
+        if ((p.length() - pIndex) % 2 == 1) {
+            return false;
+        }
+        for (int i = pIndex + 1; i < p.length(); i += 2) {
+            if (p.charAt(i) != '*') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     public void test() {
-        System.out.println(isMatch("aaa", "a*a*a"));
+        System.out.println(isMatch("aaa", "a*b*"));
 //        isMatch("aa","a") → false
 //        isMatch("aa","aa") → true
 //        isMatch("aaa","aa") → false
