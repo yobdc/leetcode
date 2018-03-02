@@ -7,12 +7,12 @@ public class Problem11 {
         Date start = new Date();
         int maxArea = 0;
 
-        for (int i = 0; i < height.length - 1; i++) {
-            for (int j = i + 1; j < height.length; j++) {
-                int tmpArea = (j - i) * (height[i] < height[j] ? height[i] : height[j]);
-                maxArea = maxArea > tmpArea ? maxArea : tmpArea;
-            }
-        }
+//        for (int i = 0; i < height.length - 1; i++) {
+//            for (int j = i + 1; j < height.length; j++) {
+//                int tmpArea = (j - i) * (height[i] < height[j] ? height[i] : height[j]);
+//                maxArea = maxArea > tmpArea ? maxArea : tmpArea;
+//            }
+//        }
 
         Date end = new Date();
         System.out.println(end.getTime() - start.getTime());
