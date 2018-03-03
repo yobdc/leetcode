@@ -7,6 +7,19 @@ public class Problem11 {
         Date start = new Date();
         int maxArea = 0;
 
+        int leftIndex = 0;
+        int rightIndex = height.length - 1;
+        while (leftIndex < rightIndex) {
+            int h = height[leftIndex] < height[rightIndex] ? height[leftIndex] : height[rightIndex];
+            int tmp = (rightIndex - leftIndex) * h;
+            maxArea = maxArea > tmp ? maxArea : tmp;
+            if (height[leftIndex] < height[rightIndex]) {
+                leftIndex++;
+            } else {
+                rightIndex--;
+            }
+        }
+
 //        for (int i = 0; i < height.length - 1; i++) {
 //            for (int j = i + 1; j < height.length; j++) {
 //                int tmpArea = (j - i) * (height[i] < height[j] ? height[i] : height[j]);
