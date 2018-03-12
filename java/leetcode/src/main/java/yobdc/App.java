@@ -5,6 +5,6 @@ package yobdc;
  */
 public class App {
     public static void main(String[] args) {
-        new Problem13().test();
+        new Problem14().test();
     }
 }
