@@ -1,10 +1,13 @@
 package yobdc;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem15 {
     public List<List<Integer>> threeSum(int[] nums) {
+        Map<Integer, Boolean> map = new HashMap<>();
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < nums.length - 2; i++) {
             for (int j = i + 1; j < nums.length - 1; j++) {
