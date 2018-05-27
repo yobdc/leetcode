@@ -1,21 +1,23 @@
 package yobdc;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem15 {
     public List<List<Integer>> threeSum(int[] nums) {
         Map<Integer, Boolean> map = new HashMap<>();
         List<List<Integer>> result = new ArrayList<>();
+        List<Integer> nums2 = Arrays.stream(nums).boxed().collect(Collectors.toList());
+        Collections.sort(nums2);
         Map<String, Boolean> resultHash = new HashMap<>();
-        for (int i = 0; i < nums.length - 2; i++) {
-            for (int j = i + 1; j < nums.length - 1; j++) {
-                for (int k = j + 1; k < nums.length; k++) {
-                    if (nums[i] + nums[j] + nums[k] == 0) {
+        for (int i = 0; i < nums2.size() - 2; i++) {
+            for (int j = i + 1; j < nums2.size() - 1; j++) {
+                for (int k = j + 1; k < nums2.size(); k++) {
+                    if (nums2.get(i) + nums2.get(j) + nums2.get(k) == 0) {
                         List<Integer> tmp = new ArrayList<>();
-                        tmp.add(nums[i]);
-                        tmp.add(nums[j]);
-                        tmp.add(nums[k]);
-                        Collections.sort(tmp);
+                        tmp.add(nums2.get(i));
+                        tmp.add(nums2.get(j));
+                        tmp.add(nums2.get(k));
                         if (!resultHash.containsKey(tmp.toString())) {
                             resultHash.put(tmp.toString(), true);
                             result.add(tmp);
