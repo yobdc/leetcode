@@ -47,7 +47,8 @@ func orangesRotting(grid [][]int) int {
 	}
 	return startErr - 2
 }
-func main() {
-	var input = [][]int{{0, 2}}
-	fmt.Println(orangesRotting(input))
-}
+
+// func main() {
+// 	var input = [][]int{{0, 2}}
+// 	fmt.Println(orangesRotting(input))
+// }
