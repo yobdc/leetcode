@@ -20,10 +20,11 @@ func distributeCandies(candies int, num_people int) []int {
 
 		nextCandies++
 		index = (index + 1) % num_people
+		fmt.Println(result)
 	}
 	return result
 }
 
-func main() {
-	fmt.Println(distributeCandies(10, 3))
-}
+// func main() {
+// 	fmt.Println(distributeCandies(10, 3))
+// }
