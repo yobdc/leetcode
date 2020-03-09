@@ -50,6 +50,6 @@ func myAtoi(str string) int {
 	return int(result)
 }
 
-func main() {
-	fmt.Print(myAtoi("  -10 ss-331"))
-}
+// func main() {
+// 	fmt.Print(myAtoi("  -10 ss-331"))
+// }
