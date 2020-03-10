@@ -46,21 +46,21 @@ func find(parent *TreeNode, max int) (maxHeight int, maxWidth int) {
 	return
 }
 
-func main() {
-	var root = &TreeNode{
-		1,
-		&TreeNode{
-			2,
-			&TreeNode{
-				4, nil, nil,
-			},
-			&TreeNode{
-				5, nil, nil,
-			},
-		},
-		&TreeNode{
-			3, nil, nil,
-		},
-	}
-	fmt.Println(diameterOfBinaryTree(root))
-}
+// func main() {
+// 	var root = &TreeNode{
+// 		1,
+// 		&TreeNode{
+// 			2,
+// 			&TreeNode{
+// 				4, nil, nil,
+// 			},
+// 			&TreeNode{
+// 				5, nil, nil,
+// 			},
+// 		},
+// 		&TreeNode{
+// 			3, nil, nil,
+// 		},
+// 	}
+// 	fmt.Println(diameterOfBinaryTree(root))
+// }
