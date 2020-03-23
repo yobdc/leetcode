@@ -4,15 +4,15 @@ import (
 	"fmt"
 )
 
-type ListNode struct {
+type ListNode2 struct {
 	Val  int
-	Next *ListNode
+	Next *ListNode2
 }
 
 // 2. 两数相加
-func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	var current = &ListNode{}
-	var result *ListNode = current
+func addTwoNumbers(l1 *ListNode2, l2 *ListNode2) *ListNode2 {
+	var current = &ListNode2{}
+	var result *ListNode2 = current
 	var tmp1 = l1
 	var tmp2 = l2
 	var more int
@@ -32,7 +32,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			more = 1
 		}
 		if tmp1 != nil || tmp2 != nil || more > 0 {
-			current.Next = &ListNode{}
+			current.Next = &ListNode2{}
 			current = current.Next
 		}
 	}
