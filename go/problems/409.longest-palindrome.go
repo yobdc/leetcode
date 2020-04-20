@@ -5,7 +5,7 @@ import (
 )
 
 //409. 最长回文串
-func longestPalindrome(s string) int {
+func longestPalindrome409(s string) int {
 	var result = len(s)
 	var chMap = make(map[byte]int)
 	for i := 0; i < len(s); i++ {
